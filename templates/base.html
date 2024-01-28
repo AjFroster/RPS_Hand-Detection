@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rock-Paper-Scissors Game</title>
+    <!-- Include Socket.IO client -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Rock-Paper-Scissors Game</h1>
+        <p>User Score: {{ user_score }} | Computer Score: {{ computer_score }}</p>
+        <h1>Hand Detection Stream</h1>
+        <img src="{{ url_for('video_feed') }}" />
+    </header>
+    {% block content %}{% endblock %}
+
+    <!-- Include your external JavaScript file -->
+    <script src="{{ url_for('static', filename='javascript.js') }}"></script>
+
+    
+    <script>
+        // Establish a connection with the Flask-SocketIO server
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+        // Listen for 'gesture_detected' event from the server
+        socket.on('gesture_detected', function(data) {
+            // Assuming data contains the gesture, and sendGesture is defined in javascript.js
+            sendGesture(data.gesture);
+        });
+    </script>
+</body>
+</html>
