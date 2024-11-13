@@ -1,6 +1,3 @@
-Thank you for the clarification. Based on this information, here's a revised README for your Rock, Paper, Scissors game with hand detection:
-Rock, Paper, Scissors Game with Hand Detection
-Purpose
 
 This project is a web-based Rock, Paper, Scissors game that uses real-time hand detection to allow users to play against a computer. The game leverages computer vision techniques to recognize hand gestures corresponding to rock, paper, or scissors.
 Setup and Installation
